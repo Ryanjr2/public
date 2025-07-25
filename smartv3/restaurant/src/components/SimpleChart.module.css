@@ -1,0 +1,353 @@
+/* Simple Chart Styles */
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.chartTitle {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+}
+
+.chart {
+  flex: 1;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  min-height: 150px;
+}
+
+/* Bar Chart */
+.barChart {
+  display: flex;
+  align-items: end;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.barContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 60px;
+}
+
+.barWrapper {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  height: 120px;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.bar {
+  width: 100%;
+  max-width: 40px;
+  background: #3b82f6;
+  border-radius: 4px 4px 0 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0.25rem;
+}
+
+.bar:hover {
+  opacity: 0.8;
+  transform: scaleY(1.05);
+}
+
+.barValue {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.barLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #64748b;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Line Chart */
+.lineChart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.svg {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-width 0.3s ease;
+}
+
+.line:hover {
+  stroke-width: 3;
+}
+
+.dot {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dot:hover {
+  r: 5;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.lineLabels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.lineLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #64748b;
+  text-align: center;
+  flex: 1;
+}
+
+/* Area Chart */
+.areaChart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.area {
+  transition: opacity 0.3s ease;
+}
+
+.area:hover {
+  opacity: 0.8;
+}
+
+.areaLabels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.areaLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #64748b;
+  text-align: center;
+  flex: 1;
+}
+
+/* Values List */
+.valuesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.valueItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.valueColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.valueLabel {
+  color: #64748b;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.valueAmount {
+  color: #1e293b;
+  font-weight: 600;
+  margin-left: auto;
+  word-break: break-all;
+  text-align: right;
+  min-width: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chartContainer {
+    padding: 0.75rem;
+  }
+  
+  .barChart {
+    gap: 0.25rem;
+    padding: 0 0.25rem;
+  }
+  
+  .barContainer {
+    max-width: 40px;
+  }
+  
+  .barWrapper {
+    height: 100px;
+  }
+  
+  .svg {
+    height: 100px;
+  }
+  
+  .barLabel, .lineLabel, .areaLabel {
+    font-size: 0.625rem;
+  }
+  
+  .barValue {
+    font-size: 0.5rem;
+  }
+  
+  .valuesList {
+    gap: 0.25rem;
+  }
+  
+  .valueItem {
+    font-size: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .valueAmount {
+    margin-left: 0;
+    text-align: left;
+    font-size: 0.7rem;
+  }
+
+  .valueLabel {
+    font-size: 0.7rem;
+  }
+}
+
+/* Animation */
+@keyframes chartLoad {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chartContainer {
+  animation: chartLoad 0.5s ease-out;
+}
+
+.bar {
+  animation: barGrow 0.8s ease-out;
+}
+
+@keyframes barGrow {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--final-height, 50%);
+  }
+}
+
+.line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: lineDraw 1s ease-out forwards;
+}
+
+@keyframes lineDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.dot {
+  opacity: 0;
+  animation: dotAppear 0.5s ease-out 0.8s forwards;
+}
+
+@keyframes dotAppear {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tooltip */
+.bar:hover::after,
+.dot:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Hover Effects */
+.chartContainer:hover .bar {
+  opacity: 0.7;
+}
+
+.chartContainer:hover .bar:hover {
+  opacity: 1;
+}
+
+.chartContainer:hover .dot {
+  opacity: 0.7;
+}
+
+.chartContainer:hover .dot:hover {
+  opacity: 1;
+}

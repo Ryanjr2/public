@@ -1,0 +1,1 @@
+The remaining errors are API 403 Forbidden. Make sure you are logged in with a valid account, or check your backend API permissions for http://127.0.0.1:8000/api/analytics/dashboard/real_time/ and http://127.0.0.1:8000/api/accounts/profile/.

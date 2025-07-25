@@ -1,0 +1,283 @@
+/* Floating Action Button Styles */
+.container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.actionsContainer {
+  position: absolute;
+  bottom: 5rem;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.actionsContainer.open {
+  pointer-events: auto;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(100px) scale(0.8);
+  opacity: 0;
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.actionsContainer.open .actionButton {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.actionButton:hover {
+  transform: translateX(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.actionIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.actionLabel {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.fab {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.fab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.fab:hover::before {
+  opacity: 1;
+}
+
+.fab:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+}
+
+.fab:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.fabOpen {
+  background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.fabOpen:hover {
+  box-shadow: 0 12px 35px rgba(239, 68, 68, 0.4);
+}
+
+.fabIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fabOpen .fabIcon {
+  transform: rotate(180deg);
+}
+
+/* Pulse animation for attention */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5), 0 0 0 10px rgba(59, 130, 246, 0.1);
+  }
+}
+
+.fab {
+  animation: pulse 3s infinite;
+}
+
+.fabOpen {
+  animation: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .fab {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  
+  .fabIcon {
+    font-size: 1.25rem;
+  }
+  
+  .actionButton {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  .actionIcon {
+    font-size: 0.875rem;
+  }
+  
+  .actionsContainer {
+    bottom: 4.5rem;
+  }
+}
+
+/* Accessibility */
+.fab:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.actionButton:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .actionButton {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .actionButton:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Smooth entrance animation */
+.container {
+  animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tooltip-like labels */
+.actionButton {
+  position: relative;
+}
+
+.actionButton::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid currentColor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.actionButton:hover::after {
+  opacity: 0.8;
+}
+
+/* Stagger animation for action buttons */
+.actionButton:nth-child(1) { transition-delay: 0ms; }
+.actionButton:nth-child(2) { transition-delay: 50ms; }
+.actionButton:nth-child(3) { transition-delay: 100ms; }
+.actionButton:nth-child(4) { transition-delay: 150ms; }
+.actionButton:nth-child(5) { transition-delay: 200ms; }
+.actionButton:nth-child(6) { transition-delay: 250ms; }
+
+/* Ripple effect */
+.fab {
+  position: relative;
+  overflow: hidden;
+}
+
+.fab::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.fab:active::after {
+  width: 200px;
+  height: 200px;
+}

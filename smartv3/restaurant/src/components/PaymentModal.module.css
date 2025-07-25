@@ -1,0 +1,436 @@
+/* src/components/PaymentModal.module.css */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #e5e7eb;
+}
+
+.content {
+  padding: 1.5rem;
+}
+
+/* Method Selection */
+.methodSelection h3 {
+  margin: 0 0 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.methodButton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.methodButton:hover {
+  border-color: #3b82f6;
+  background: #f8fafc;
+}
+
+.methodIcon {
+  font-size: 2rem;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.methodInfo h4 {
+  margin: 0 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.methodInfo p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Payment Details */
+.paymentDetails h3 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.backButton {
+  margin-bottom: 1rem;
+}
+
+.backButton button {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.5rem 0;
+}
+
+.backButton button:hover {
+  text-decoration: underline;
+}
+
+.paymentSummary {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.summaryRow:last-child {
+  margin-bottom: 0;
+}
+
+.summaryRow span:first-child {
+  color: #6b7280;
+}
+
+.summaryRow span:last-child {
+  font-weight: 500;
+  color: #111827;
+}
+
+.totalRow {
+  border-top: 1px solid #d1d5db;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.totalRow span {
+  color: #059669 !important;
+}
+
+/* Form Styles */
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+/* M-Pesa specific */
+.mpesaInfo {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.mpesaInfo p {
+  margin: 0.25rem 0;
+  font-size: 0.875rem;
+  color: #1e40af;
+}
+
+/* Cash specific */
+.changeInfo {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.changeInfo p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #059669;
+}
+
+/* Pay Button */
+.payButton {
+  width: 100%;
+  padding: 1rem;
+  background: #059669;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 1.5rem;
+}
+
+.payButton:hover:not(:disabled) {
+  background: #047857;
+}
+
+.payButton:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+}
+
+/* Processing */
+.processing {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.spinner {
+  font-size: 3rem;
+  color: #3b82f6;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.processing h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.processing p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.mpesaPrompt {
+  margin-top: 1rem !important;
+  color: #059669 !important;
+  font-weight: 500 !important;
+}
+
+/* Result */
+.result {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.resultIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.resultIcon.success {
+  color: #059669;
+}
+
+.resultIcon.error {
+  color: #dc2626;
+}
+
+.result h3 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.result h3:has(.success) {
+  color: #059669;
+}
+
+.result h3:has(.error) {
+  color: #dc2626;
+}
+
+.resultMessage {
+  margin: 0 0 1.5rem;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.receiptInfo {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.receiptInfo p {
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.receiptInfo strong {
+  color: #111827;
+}
+
+.resultActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.doneButton,
+.retryButton,
+.cancelButton {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.doneButton {
+  background: #059669;
+  color: white;
+}
+
+.doneButton:hover {
+  background: #047857;
+}
+
+.retryButton {
+  background: #3b82f6;
+  color: white;
+}
+
+.retryButton:hover {
+  background: #2563eb;
+}
+
+.cancelButton {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.cancelButton:hover {
+  background: #e5e7eb;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal {
+    margin: 1rem;
+    max-width: none;
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  
+  .resultActions {
+    flex-direction: column;
+  }
+  
+  .header {
+    padding: 1rem;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+}
